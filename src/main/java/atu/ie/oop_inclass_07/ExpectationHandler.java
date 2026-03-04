@@ -12,4 +12,11 @@ import java.util.Map;
 
 public class ExpectationHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String,Object>> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex){
+        Map<String,Object> map = new HashMap<>();
+        for(FieldError fieldError : ex.getBindingResult().getFieldErrors()){
+            fieldError.put(FieldError.getFeild(), fieldError.getDefaultMessage());
+        }
+        return ResponseEntity.badRequest().body(map);
+    }
 }
