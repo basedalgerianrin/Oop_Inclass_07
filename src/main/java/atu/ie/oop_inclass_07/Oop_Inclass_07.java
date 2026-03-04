@@ -7,4 +7,7 @@ import org.springframework.boot.test.context.springBootTest;
 
 
 public class Oop_Inclass_07 {
+    @Test
+    void contextLoads() {
+    }
 }
